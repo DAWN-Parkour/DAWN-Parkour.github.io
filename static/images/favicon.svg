@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="f10_c"><circle cx="32" cy="32" r="30"/></clipPath>
+    <radialGradient id="f10_sky" cx="32" cy="62" r="55" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fffde7"/>
+      <stop offset="30%" stop-color="#f5c242"/>
+      <stop offset="50%" stop-color="#e8843c"/>
+      <stop offset="72%" stop-color="#8b1a2b"/>
+      <stop offset="100%" stop-color="#060818"/>
+    </radialGradient>
+    <radialGradient id="f10_sun" cx="32" cy="44" r="18" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#f5c242" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#e8843c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#f10_sky)"/>
+  <ellipse cx="32" cy="44" rx="22" ry="16" fill="url(#f10_sun)" clip-path="url(#f10_c)"/>
+  <path d="M2 46 Q32 40 62 46 L62 64 L2 64 Z" fill="#3d1c0c" clip-path="url(#f10_c)"/>
+</svg>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models">
+  <meta name="description" content="DAWN enables noise-robust quadruped parkour by building depth noise robustness directly into a world model, eliminating hand-tuned post-processing filters at deployment.">
+  <meta name="keywords" content="quadruped parkour, depth denoising, world models, legged locomotion, reinforcement learning, robotics, noise robustness">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models">
+  <meta property="og:description" content="DAWN enables noise-robust quadruped parkour by building depth noise robustness directly into a world model, eliminating hand-tuned post-processing filters at deployment.">
+  <meta property="og:url" content="https://dawn-parkour.github.io">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models">
+  <meta name="twitter:description" content="DAWN enables noise-robust quadruped parkour by building depth noise robustness directly into a world model, eliminating hand-tuned post-processing filters at deployment.">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models">
+  <meta name="citation_publication_date" content="2026">
+
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models</title>
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+  <link rel="apple-touch-icon" href="static/images/favicon.svg">
+
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="static/js/index.js"></script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models</h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">Anonymous Author(s)</span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="static/pdfs/paper.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv (coming soon)</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code (coming soon)</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaser video -->
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <video poster="" id="teaser" autoplay muted loop playsinline height="100%" preload="metadata">
+            <source src="static/videos/teaser.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            DAWN achieves zero-shot quadruped parkour on a Unitree Go1 <strong>without any manual filter calibration</strong>&mdash;relying solely on a learned noise model to bridge the sim-to-real gap for depth-based locomotion.
+          </h2>
+        </div>
+      </div>
+    </section>
+    <!-- End teaser video -->
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div class="abstract-text">
+              <p>Vision-based legged locomotion methods assume clean depth at training time and rely on <strong>hand-tuned post-processing filters</strong> at deployment. However, filter parameters are rarely disclosed, hindering reproducibility, and performance degrades substantially when depth noise is left unaddressed. Building noise robustness directly into the learning pipeline would eliminate this dependency. While such robustness has been explored for proprioceptive inputs, analogous approaches for depth perception remain largely absent in legged locomotion. We propose DAWN (Denoising and Alignment in World models for Noise-robustness), a noise-robust perception framework for legged locomotion, which builds noise robustness directly into a world model via two modifications: (1) feeding noisy depth to the encoder while keeping clean depth as the reconstruction target, forcing the model to implicitly denoise its input; and (2) applying contrastive learning to align the latent states of noisy and clean depth. Importantly, DAWN is agnostic to the specific noise model, requiring no assumptions about the noise distribution at deployment. Furthermore, it incurs no additional inference cost over existing world model-based methods. <strong>Without any manual filter calibration</strong>&mdash;relying solely on the learned noise model&mdash;DAWN achieves zero-shot quadruped parkour on a Unitree Go1: traversing stairs up to 18 cm, clearing gaps up to 70 cm, and mounting steps up to 45 cm <strong>from raw depth observations</strong>. Ablation studies show that denoising and contrastive alignment contribute at complementary levels&mdash;reconstruction and representation, respectively&mdash;and yield additive gains when combined.</p>
+            </div>
+
+            <div class="abstract-tags">
+              <span class="abstract-tag abstract-tag--accent"><i class="fas fa-ban"></i> No Manual Calibration</span>
+              <span class="abstract-tag abstract-tag--green"><i class="fas fa-shield-alt"></i> Noise-Agnostic</span>
+              <span class="abstract-tag abstract-tag--blue"><i class="fas fa-bolt"></i> Zero Overhead</span>
+              <span class="abstract-tag abstract-tag--purple"><i class="fas fa-rocket"></i> Zero-Shot Deploy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End paper abstract -->
+
+    <!-- Method Overview -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Method Overview</h2>
+            <div class="content has-text-justified">
+              <p>
+                DAWN modifies only the training signals of the RSSM&mdash;not its architecture. The encoder receives noisy depth while the decoder reconstructs clean depth, and a contrastive loss aligns their latent representations. At deployment, all training-only components are removed, adding zero overhead.
+              </p>
+            </div>
+            <figure class="method-figure">
+              <img src="static/images/DAWN_framework.png" alt="Overview of the DAWN framework. Solid arrows indicate the training and deployment path; dashed arrows indicate the training-only path.">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End method overview -->
+
+    <!-- Simulation Results -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Simulation Results</h2>
+        <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
+          DAWN achieves 96.9% average success rate across Stair/Gap/Step terrains <strong>from noisy depth observations</strong>.
+        </p>
+
+        <div class="sim-carousel">
+          <div class="sim-carousel-track">
+            <div class="sim-carousel-slider">
+              <div class="sim-carousel-slide">
+                <div class="video-card">
+                  <div class="card-label">Gap</div>
+                  <video autoplay muted loop playsinline preload="metadata">
+                    <source src="static/videos/sim_gap.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="sim-carousel-slide">
+                <div class="video-card">
+                  <div class="card-label">Step</div>
+                  <video autoplay muted loop playsinline preload="metadata">
+                    <source src="static/videos/sim_step.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="sim-carousel-slide">
+                <div class="video-card">
+                  <div class="card-label">Stair</div>
+                  <video autoplay muted loop playsinline preload="metadata">
+                    <source src="static/videos/sim_stair.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sim-carousel-controls">
+            <button class="sim-carousel-btn sim-carousel-prev" onclick="simCarouselNav(-1)" aria-label="Previous">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="sim-carousel-dots">
+              <span class="sim-dot active" onclick="simCarouselGo(0)"></span>
+              <span class="sim-dot" onclick="simCarouselGo(1)"></span>
+              <span class="sim-dot" onclick="simCarouselGo(2)"></span>
+            </div>
+            <button class="sim-carousel-btn sim-carousel-next" onclick="simCarouselNav(1)" aria-label="Next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- End simulation results -->
+
+    <!-- Real-World Results -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Real-World Deployment</h2>
+        <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
+          Deployed on a Unitree Go1 with an Intel RealSense D435i&mdash;<strong style="color: var(--text-primary);">without any manual filter calibration</strong>.
+        </p>
+
+        <div class="columns is-centered is-multiline">
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label">Stair</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/real_stair.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label">Gap</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/real_gap.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label">Step</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/real_step.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label">Slope</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/real_slope.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End real-world results -->
+
+    <!-- Lighting Robustness -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Robustness to Lighting Variations</h2>
+        <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
+          Outdoor sunlight induces IR interference that amplifies depth corruption. DAWN handles these varying noise conditions <strong style="color: var(--text-primary);">without any environment-specific recalibration</strong>.
+        </p>
+
+        <div class="columns is-centered is-multiline">
+          <div class="column is-one-third">
+            <div class="video-card">
+              <div class="card-label">Direct Sunlight</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/lighting_sunlight.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="video-card">
+              <div class="card-label">Overcast</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/lighting_overcast.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="video-card">
+              <div class="card-label">Nighttime</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/lighting_nighttime.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End lighting robustness -->
+
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@article{dawn2026,
+  title={DAWN: Noise-Robust Quadruped Parkour via Depth-Denoising World Models},
+  author={Anonymous},
+  year={2026}
+}</code></pre>
+      </div>
+    </section>
+    <!--End BibTex citation -->
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
