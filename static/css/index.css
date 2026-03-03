@@ -98,7 +98,7 @@ body {
 }
 
 .hero-body {
-  padding: 4rem 1.5rem;
+  padding: 3rem 1.5rem 2rem;
 }
 
 .teaser .hero-body {
@@ -576,6 +576,95 @@ a:focus {
     width: 36px;
     height: 36px;
     font-size: 0.9rem;
+  }
+}
+
+/* Hero Tagline */
+.hero-tagline {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.7;
+}
+
+/* Hero Evidence Section */
+.hero-evidence {
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+.teaser-videos {
+  margin: 0 !important;
+  margin-bottom: 2rem !important;
+}
+.teaser-videos .column {
+  padding: 0.125rem !important;
+  overflow: hidden;
+}
+.teaser-videos video {
+  width: 100%;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: cover;
+  aspect-ratio: 5 / 4;
+}
+
+/* Catchphrase */
+.catchphrase {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: -0.75rem;
+  margin-bottom: 0;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* Card Stat Annotation */
+.card-stat {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* Motivation Callout */
+.motivation-callout {
+  background: #eff6ff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+}
+.callout-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.motivation-callout p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Responsive: New Components */
+@media screen and (max-width: 768px) {
+  .hero-tagline {
+    font-size: 1rem;
+  }
+  .catchphrase {
+    font-size: 1.15rem;
+  }
+  .problem-callout {
+    padding: 1rem 1.25rem;
   }
 }
 

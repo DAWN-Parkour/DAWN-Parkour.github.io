@@ -72,7 +72,7 @@
 
   <main id="main-content">
 
-    <!-- Hero Section -->
+    <!-- 1. Hero Section -->
     <section class="hero">
       <div class="hero-body">
         <div class="container is-max-desktop">
@@ -119,22 +119,44 @@
       </div>
     </section>
 
-    <!-- Teaser video -->
-    <section class="hero teaser">
+    <!-- 2. Lighting Robustness — Videos first, then explanation -->
+    <section class="section hero-evidence">
       <div class="container is-max-desktop">
-        <div class="hero-body">
-          <video poster="" id="teaser" autoplay muted loop playsinline height="100%" preload="metadata">
-            <source src="static/videos/teaser.mp4" type="video/mp4">
-          </video>
-          <h2 class="subtitle has-text-centered">
-            DAWN achieves zero-shot quadruped parkour on a Unitree Go1 <strong>without any manual filter calibration</strong>&mdash;relying solely on a learned noise model to bridge the sim-to-real gap for depth-based locomotion.
-          </h2>
+
+        <!-- Lighting videos -->
+        <div class="columns is-centered is-multiline teaser-videos">
+          <div class="column is-one-third">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/lighting_sunlight.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/lighting_overcast.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-one-third">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/lighting_nighttime.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
+
+        <p class="catchphrase has-text-centered">
+          From direct sunlight to pitch darkness&mdash;<strong>same model, zero recalibration.</strong>
+        </p>
+
+        <div class="abstract-tags">
+          <span class="abstract-tag abstract-tag--accent"><i class="fas fa-ban"></i> No Manual Calibration</span>
+          <span class="abstract-tag abstract-tag--green"><i class="fas fa-sun"></i> Any Lighting Condition</span>
+          <span class="abstract-tag abstract-tag--blue"><i class="fas fa-bolt"></i> Zero Inference Overhead</span>
+          <span class="abstract-tag abstract-tag--purple"><i class="fas fa-rocket"></i> Zero-Shot Deploy</span>
+        </div>
+
       </div>
     </section>
-    <!-- End teaser video -->
 
-    <!-- Paper abstract -->
+    <!-- 3. Abstract -->
     <section class="section hero is-light">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
@@ -145,24 +167,104 @@
 
         <div class="columns is-centered">
           <div class="column is-four-fifths">
+            <div class="motivation-callout">
+              <h3 class="callout-title"><i class="fas fa-lightbulb"></i> Motivation</h3>
+              <p>Vision-based parkour methods rely on <strong>hand-tuned depth post-processing filters</strong> at deployment. These filter parameters are scene-dependent, rarely disclosed, and require manual recalibration for every new environment&mdash;hindering both reproducibility and real-world robustness.</p>
+            </div>
+
             <div class="abstract-text">
               <p>Vision-based legged locomotion methods assume clean depth at training time and rely on <strong>hand-tuned post-processing filters</strong> at deployment. However, filter parameters are rarely disclosed, hindering reproducibility, and performance degrades substantially when depth noise is left unaddressed. Building noise robustness directly into the learning pipeline would eliminate this dependency. While such robustness has been explored for proprioceptive inputs, analogous approaches for depth perception remain largely absent in legged locomotion. We propose DAWN (Denoising and Alignment in World models for Noise-robustness), a noise-robust perception framework for legged locomotion, which builds noise robustness directly into a world model via two modifications: (1) feeding noisy depth to the encoder while keeping clean depth as the reconstruction target, forcing the model to implicitly denoise its input; and (2) applying contrastive learning to align the latent states of noisy and clean depth. Importantly, DAWN is agnostic to the specific noise model, requiring no assumptions about the noise distribution at deployment. Furthermore, it incurs no additional inference cost over existing world model-based methods. <strong>Without any manual filter calibration</strong>&mdash;relying solely on the learned noise model&mdash;DAWN achieves zero-shot quadruped parkour on a Unitree Go1: traversing stairs up to 18 cm, clearing gaps up to 70 cm, and mounting steps up to 45 cm <strong>from raw depth observations</strong>. Ablation studies show that denoising and contrastive alignment contribute at complementary levels&mdash;reconstruction and representation, respectively&mdash;and yield additive gains when combined.</p>
             </div>
 
-            <div class="abstract-tags">
-              <span class="abstract-tag abstract-tag--accent"><i class="fas fa-ban"></i> No Manual Calibration</span>
-              <span class="abstract-tag abstract-tag--green"><i class="fas fa-shield-alt"></i> Noise-Agnostic</span>
-              <span class="abstract-tag abstract-tag--blue"><i class="fas fa-bolt"></i> Zero Overhead</span>
-              <span class="abstract-tag abstract-tag--purple"><i class="fas fa-rocket"></i> Zero-Shot Deploy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Real-World Deployment -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Real-World Deployment</h2>
+        <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
+          Deployed on a Unitree Go1 with an Intel RealSense D435i&mdash;<strong style="color: var(--text-primary);">without any manual filter calibration</strong>.
+        </p>
+
+        <div class="columns is-centered is-multiline">
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label">Stair</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/real_stair.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label">Gap</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/real_gap.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label">Step</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/real_step.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label">Slope</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/real_slope.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- End paper abstract -->
+
+    <!-- Robustness to Lighting Variations -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Robustness to Lighting Variations</h2>
+        <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
+          Outdoor sunlight induces IR interference that amplifies depth corruption. DAWN handles these varying noise conditions <strong style="color: var(--text-primary);">without any environment-specific recalibration</strong>.
+        </p>
+
+        <div class="columns is-centered is-multiline">
+          <div class="column is-one-third">
+            <div class="video-card">
+              <div class="card-label">Direct Sunlight</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/lighting_sunlight.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="video-card">
+              <div class="card-label">Overcast</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/lighting_overcast.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="video-card">
+              <div class="card-label">Nighttime</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/lighting_nighttime.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Method Overview -->
-    <section class="section">
+    <section class="section hero is-light">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
@@ -179,14 +281,13 @@
         </div>
       </div>
     </section>
-    <!-- End method overview -->
 
-    <!-- Simulation Results -->
-    <section class="section hero is-light">
+    <!-- 7. Simulation Results -->
+    <section class="section">
       <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered">Simulation Results</h2>
         <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
-          DAWN achieves 96.9% average success rate across Stair/Gap/Step terrains <strong>from noisy depth observations</strong>.
+          Compare the noisy depth input with DAWN's reconstruction&mdash;<strong style="color: var(--text-primary);">DAWN discards noise, retains only task-relevant geometry, and drives agile parkour directly from it</strong>.
         </p>
 
         <div class="sim-carousel">
@@ -235,91 +336,6 @@
 
       </div>
     </section>
-    <!-- End simulation results -->
-
-    <!-- Real-World Results -->
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Real-World Deployment</h2>
-        <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
-          Deployed on a Unitree Go1 with an Intel RealSense D435i&mdash;<strong style="color: var(--text-primary);">without any manual filter calibration</strong>.
-        </p>
-
-        <div class="columns is-centered is-multiline">
-          <div class="column is-half">
-            <div class="video-card">
-              <div class="card-label">Stair</div>
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="static/videos/real_stair.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <div class="column is-half">
-            <div class="video-card">
-              <div class="card-label">Gap</div>
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="static/videos/real_gap.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <div class="column is-half">
-            <div class="video-card">
-              <div class="card-label">Step</div>
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="static/videos/real_step.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <div class="column is-half">
-            <div class="video-card">
-              <div class="card-label">Slope</div>
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="static/videos/real_slope.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End real-world results -->
-
-    <!-- Lighting Robustness -->
-    <section class="section hero is-light">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Robustness to Lighting Variations</h2>
-        <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
-          Outdoor sunlight induces IR interference that amplifies depth corruption. DAWN handles these varying noise conditions <strong style="color: var(--text-primary);">without any environment-specific recalibration</strong>.
-        </p>
-
-        <div class="columns is-centered is-multiline">
-          <div class="column is-one-third">
-            <div class="video-card">
-              <div class="card-label">Direct Sunlight</div>
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="static/videos/lighting_sunlight.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <div class="column is-one-third">
-            <div class="video-card">
-              <div class="card-label">Overcast</div>
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="static/videos/lighting_overcast.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <div class="column is-one-third">
-            <div class="video-card">
-              <div class="card-label">Nighttime</div>
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="static/videos/lighting_nighttime.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End lighting robustness -->
 
     <!--BibTex citation -->
     <section class="section" id="BibTeX">
