@@ -57,8 +57,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   </noscript>
 
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Fonts & Material Icons - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Icons&display=swap" rel="stylesheet">
 
   <!-- Defer non-critical JavaScript -->
   <script defer src="static/js/index.js"></script>
@@ -119,25 +119,15 @@
       </div>
     </section>
 
-    <!-- 2. Lighting Robustness — Videos first, then explanation -->
-    <section class="section hero-evidence">
+    <!-- 2. Preview -->
+    <section class="section section-preview">
       <div class="container is-max-desktop">
 
-        <!-- Lighting videos -->
-        <div class="columns is-centered is-multiline teaser-videos">
-          <div class="column is-one-third">
+        <!-- Preview video -->
+        <div class="columns is-centered preview-videos">
+          <div class="column">
             <video autoplay muted loop playsinline preload="metadata">
-              <source src="static/videos/lighting_sunlight.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="column is-one-third">
-            <video autoplay muted loop playsinline preload="metadata">
-              <source src="static/videos/lighting_overcast.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="column is-one-third">
-            <video autoplay muted loop playsinline preload="metadata">
-              <source src="static/videos/lighting_nighttime.mp4" type="video/mp4">
+              <source src="static/videos/preview.mp4" type="video/mp4">
             </video>
           </div>
         </div>
@@ -181,12 +171,57 @@
       </div>
     </section>
 
-    <!-- 4. Real-World Deployment -->
+    <!-- 4. Robustness to Lighting Variations -->
     <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Robustness to Lighting Variations</h2>
+        <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
+          Outdoor sunlight induces IR interference that amplifies depth corruption. DAWN maintains <strong style="color: var(--text-primary);">consistent performance across all lighting conditions without any environment-specific recalibration</strong>.
+        </p>
+
+        <div class="columns is-centered is-multiline">
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label"><i class="fas fa-sun"></i> Direct Sunlight</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/lighting_sunlight.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label"><i class="fas fa-cloud-sun"></i> Overcast</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/lighting_overcast.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label"><span class="material-icons" style="font-size:1.4em;vertical-align:-0.15em;">wb_shade</span> Shaded</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/lighting_shaded.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-card">
+              <div class="card-label"><i class="fas fa-moon"></i> Nighttime</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/lighting_nighttime.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Real-World Deployment -->
+    <section class="section hero is-light">
       <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered">Real-World Deployment</h2>
         <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
-          Deployed on a Unitree Go1 with an Intel RealSense D435i&mdash;<strong style="color: var(--text-primary);">without any manual filter calibration</strong>.
+          Deployed on a Unitree Go1 with an Intel RealSense D435i&mdash;operating <strong style="color: var(--text-primary);">directly from raw depth</strong>, with no post-processing.
         </p>
 
         <div class="columns is-centered is-multiline">
@@ -226,44 +261,7 @@
       </div>
     </section>
 
-    <!-- Robustness to Lighting Variations -->
-    <section class="section hero is-light">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Robustness to Lighting Variations</h2>
-        <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
-          Outdoor sunlight induces IR interference that amplifies depth corruption. DAWN handles these varying noise conditions <strong style="color: var(--text-primary);">without any environment-specific recalibration</strong>.
-        </p>
-
-        <div class="columns is-centered is-multiline">
-          <div class="column is-one-third">
-            <div class="video-card">
-              <div class="card-label">Direct Sunlight</div>
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="static/videos/lighting_sunlight.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <div class="column is-one-third">
-            <div class="video-card">
-              <div class="card-label">Overcast</div>
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="static/videos/lighting_overcast.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <div class="column is-one-third">
-            <div class="video-card">
-              <div class="card-label">Nighttime</div>
-              <video autoplay muted loop playsinline preload="metadata">
-                <source src="static/videos/lighting_nighttime.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Method Overview -->
+    <!-- 6. Method Overview -->
     <section class="section hero is-light">
       <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered">Method Overview</h2>
@@ -333,7 +331,44 @@
       </div>
     </section>
 
-    <!--BibTex citation -->
+    <!-- 8. Baselines -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Baselines</h2>
+        <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
+          A <a href="https://wmp-loco.github.io/" target="_blank" style="color: var(--accent-color); text-decoration: underline;">baseline</a> trained with hand-tuned depth filters performs well indoors, but <strong style="color: var(--text-primary);">requires environment-specific recalibration</strong> when lighting conditions change.
+        </p>
+
+        <div class="columns is-centered is-multiline">
+          <div class="column is-one-third">
+            <div class="video-card">
+              <div class="card-label">Indoor (Success)</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/baseline_indoor.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="video-card">
+              <div class="card-label">Outdoor Shaded (Fail)</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/baseline_shaded.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="video-card">
+              <div class="card-label">Outdoor Sunlight (Fail)</div>
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="static/videos/baseline_sunlight.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. BibTex citation -->
     <section class="section" id="BibTeX">
       <div class="container is-max-desktop content">
         <div class="bibtex-header">

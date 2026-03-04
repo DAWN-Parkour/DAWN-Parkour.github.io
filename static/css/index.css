@@ -101,14 +101,6 @@ body {
   padding: 3rem 1.5rem 2rem;
 }
 
-.teaser .hero-body {
-  padding-top: 2rem;
-  padding-bottom: 4rem;
-}
-
-.teaser {
-  font-family: 'Inter', sans-serif;
-}
 
 
 /* Publication Content Styling */
@@ -308,10 +300,6 @@ code {
     margin: 0.25rem !important;
     font-size: 0.875rem !important;
     padding: 0.75rem 1rem !important;
-  }
-
-  .teaser .hero-body {
-    padding: 1rem;
   }
 
   .content.has-text-justified {
@@ -588,26 +576,25 @@ a:focus {
   line-height: 1.7;
 }
 
-/* Hero Evidence Section */
-.hero-evidence {
+/* Preview Section */
+.section-preview {
   padding-top: 1.5rem;
   padding-bottom: 3rem;
 }
-.teaser-videos {
+.preview-videos {
   margin: 0 !important;
   margin-bottom: 2rem !important;
 }
-.teaser-videos .column {
+.preview-videos .column {
   padding: 0.125rem !important;
   overflow: hidden;
 }
-.teaser-videos video {
+.preview-videos video {
   width: 100%;
   display: block;
   border-radius: 0;
   box-shadow: none;
-  object-fit: cover;
-  aspect-ratio: 5 / 4;
+  object-fit: contain;
 }
 
 /* Catchphrase */
