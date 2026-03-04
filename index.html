@@ -266,19 +266,15 @@
     <!-- Method Overview -->
     <section class="section hero is-light">
       <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Method Overview</h2>
-            <div class="content has-text-justified">
-              <p>
-                DAWN modifies only the training signals of the RSSM&mdash;not its architecture. The encoder receives noisy depth while the decoder reconstructs clean depth, and a contrastive loss aligns their latent representations. At deployment, all training-only components are removed, adding zero overhead.
-              </p>
-            </div>
-            <figure class="method-figure">
-              <img src="static/images/DAWN_framework.png" alt="Overview of the DAWN framework. Solid arrows indicate the training and deployment path; dashed arrows indicate the training-only path.">
-            </figure>
-          </div>
+        <h2 class="title is-3 has-text-centered">Method Overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            DAWN modifies only the training signals of the RSSM&mdash;not its architecture. The encoder receives noisy depth while the decoder reconstructs clean depth, and a contrastive loss aligns their latent representations. At deployment, all training-only components are removed, adding zero overhead.
+          </p>
         </div>
+        <figure class="method-figure">
+          <img src="static/images/DAWN_framework.png" alt="Overview of the DAWN framework. Solid arrows indicate the training and deployment path; dashed arrows indicate the training-only path.">
+        </figure>
       </div>
     </section>
 
