@@ -111,4 +111,18 @@ document.querySelector('.method-figure img').addEventListener('click', function 
     });
 });
 
+// Skeleton shimmer: wrap each video in a skeleton div
+document.querySelectorAll('video').forEach(function(video) {
+    var wrapper = document.createElement('div');
+    wrapper.className = 'video-skeleton';
+    video.parentNode.insertBefore(wrapper, video);
+    wrapper.appendChild(video);
+    video.addEventListener('canplay', function() {
+        wrapper.classList.add('loaded');
+    });
+    if (video.readyState >= 3) {
+        wrapper.classList.add('loaded');
+    }
+});
+
 setupVideoCarouselAutoplay();

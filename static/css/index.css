@@ -590,6 +590,12 @@ a:focus {
   padding: 0.125rem !important;
   overflow: hidden;
 }
+.preview-videos video,
+.video-card video {
+  position: relative;
+  z-index: 1;
+}
+
 .preview-videos video {
   width: 100%;
   display: block;
@@ -597,6 +603,36 @@ a:focus {
   box-shadow: none;
   object-fit: contain;
   background: #e2e8f0;
+}
+
+/* Skeleton shimmer for video loading */
+.video-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.video-skeleton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s infinite;
+  z-index: 0;
+}
+
+.video-skeleton.loaded::before {
+  display: none;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 /* Catchphrase */
