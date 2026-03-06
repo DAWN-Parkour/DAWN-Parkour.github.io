@@ -590,10 +590,15 @@ a:focus {
   padding: 0.125rem !important;
   overflow: hidden;
 }
-.preview-videos video,
-.video-card video {
+.video-skeleton video {
   position: relative;
+  z-index: -1;
+  background: transparent;
+}
+
+.video-skeleton.loaded video {
   z-index: 1;
+  background: #e2e8f0;
 }
 
 .preview-videos video {
