@@ -125,4 +125,82 @@ document.querySelectorAll('video').forEach(function(video) {
     }
 });
 
+// Prioritized video loading with dynamic viewport-based scheduling
+(function() {
+    var previewVideo = document.querySelector('.preview-videos video');
+    var otherVideos = Array.from(document.querySelectorAll('video')).filter(function(v) {
+        return v !== previewVideo;
+    });
+
+    var loadingSet = new Set();   // currently downloading
+    var loadedSet = new Set();    // download complete (canplay fired)
+    var visibleSet = new Set();   // currently in viewport
+    var MAX_CONCURRENT = 2;      // max simultaneous downloads
+
+    function startLoad(video) {
+        if (loadingSet.has(video) || loadedSet.has(video)) return;
+        loadingSet.add(video);
+        video.preload = 'auto';
+        video.load();
+        video.addEventListener('canplay', function() {
+            loadingSet.delete(video);
+            loadedSet.add(video);
+            fillSlots();
+        }, { once: true });
+    }
+
+    function fillSlots() {
+        // Count active downloads
+        var active = loadingSet.size;
+        if (active >= MAX_CONCURRENT) return;
+
+        // Priority 1: visible videos (in viewport)
+        for (var i = 0; i < otherVideos.length; i++) {
+            if (active >= MAX_CONCURRENT) return;
+            var v = otherVideos[i];
+            if (visibleSet.has(v) && !loadingSet.has(v) && !loadedSet.has(v)) {
+                startLoad(v);
+                active++;
+            }
+        }
+
+        // Priority 2: remaining videos in DOM order
+        for (var j = 0; j < otherVideos.length; j++) {
+            if (active >= MAX_CONCURRENT) return;
+            var v2 = otherVideos[j];
+            if (!loadingSet.has(v2) && !loadedSet.has(v2)) {
+                startLoad(v2);
+                active++;
+            }
+        }
+    }
+
+    // Track which videos are in/near viewport
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                visibleSet.add(entry.target);
+            } else {
+                visibleSet.delete(entry.target);
+            }
+        });
+        fillSlots();
+    }, { rootMargin: '200px' });
+
+    otherVideos.forEach(function(video) {
+        observer.observe(video);
+    });
+
+    // After preview loads, start loading others
+    if (previewVideo) {
+        if (previewVideo.readyState >= 3) {
+            fillSlots();
+        } else {
+            previewVideo.addEventListener('canplay', function() {
+                fillSlots();
+            }, { once: true });
+        }
+    }
+})();
+
 setupVideoCarouselAutoplay();
