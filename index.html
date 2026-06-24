@@ -186,11 +186,6 @@
 
         <div class="columns is-centered">
           <div class="column is-four-fifths">
-            <div class="motivation-callout">
-              <h3 class="callout-title"><i class="fas fa-lightbulb"></i> Motivation</h3>
-              <p>Vision-based parkour methods rely on <strong>hand-tuned depth post-processing filters</strong> at deployment. These filter parameters are scene-dependent, rarely disclosed, and require manual recalibration for every new environment&mdash;hindering both reproducibility and real-world robustness.</p>
-            </div>
-
             <div class="abstract-text">
               <p>Vision-based legged locomotion methods assume clean depth at training time and rely on <strong>hand-tuned post-processing filters</strong> at deployment. However, filter parameters are rarely disclosed, hindering reproducibility, and performance degrades substantially when depth noise is left unaddressed. Building noise robustness directly into the learning pipeline would eliminate this dependency. While such robustness has been explored for proprioceptive inputs, analogous approaches for depth perception remain largely absent in legged locomotion. We propose DAWN (Denoising and Alignment in World models for Noise-robustness), a noise-robust perception framework for legged locomotion, which builds noise robustness directly into a world model via two modifications: (1) feeding noisy depth to the encoder while keeping clean depth as the reconstruction target, forcing the model to implicitly denoise its input; and (2) applying contrastive learning to align the latent states of noisy and clean depth. Importantly, DAWN is agnostic to the specific noise model, requiring no assumptions about the noise distribution at deployment. Furthermore, it incurs no additional inference cost over existing world model-based methods. <strong>Without any manual filter calibration</strong>&mdash;relying solely on the learned noise model&mdash;DAWN achieves zero-shot quadruped parkour on a Unitree Go1: traversing stairs up to 18 cm, clearing gaps up to 70 cm, and mounting steps up to 45 cm <strong>from raw depth observations</strong>. Ablation studies show that denoising and contrastive alignment contribute at complementary levels&mdash;reconstruction and representation, respectively&mdash;and yield additive gains when combined.</p>
             </div>
@@ -291,7 +286,7 @@
     </section>
 
     <!-- 6. Method Overview -->
-    <section class="section hero is-light">
+    <section class="section">
       <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered">Method Overview</h2>
         <div class="content has-text-justified">
@@ -306,7 +301,7 @@
     </section>
 
     <!-- 7. Simulation Results -->
-    <section class="section">
+    <section class="section hero is-light">
       <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered">Simulation Results</h2>
         <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
@@ -361,7 +356,7 @@
     </section>
 
     <!-- 8. Baselines -->
-    <section class="section hero is-light">
+    <section class="section">
       <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered">Baselines</h2>
         <p class="has-text-centered subtitle is-5" style="margin-top: -1rem; margin-bottom: 2rem; color: var(--text-secondary);">
@@ -398,7 +393,7 @@
     </section>
 
     <!-- 9. BibTex citation -->
-    <section class="section" id="BibTeX">
+    <section class="section hero is-light" id="BibTeX">
       <div class="container is-max-desktop content">
         <div class="bibtex-header">
           <h2 class="title">BibTeX</h2>

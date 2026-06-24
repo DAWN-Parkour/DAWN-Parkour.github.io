@@ -2,11 +2,9 @@
 :root {
   --primary-color: #2563eb;
   --primary-hover: #1d4ed8;
-  --secondary-color: #64748b;
   --accent-color: #0ea5e9;
   --text-primary: #363636;
   --text-secondary: #4a4a4a;
-  --text-light: #7a7a7a;
   --background-primary: #ffffff;
   --background-secondary: #f8fafc;
   --background-accent: #f1f5f9;
@@ -15,9 +13,7 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-accent: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
-  --gradient-subtle: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
   --border-radius: 12px;
   --border-radius-lg: 16px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -65,25 +61,9 @@ body {
   background: #1a1a1a !important;
 }
 
-.footer .icon-link {
-    font-size: 25px;
-    color: var(--text-secondary);
-    transition: var(--transition);
-}
-
-.footer .icon-link:hover {
-    color: var(--primary-color);
-    transform: translateY(-2px);
-}
-
 .link-block a {
     margin: 5px 4px;
 }
-
-.dnerf {
-  font-variant: small-caps;
-}
-
 
 /* Hero Section Modernization */
 .hero {
@@ -164,18 +144,6 @@ body {
   object-fit: contain;
 }
 
-/* Pagination and Misc Improvements */
-.slider-pagination .slider-page {
-  background: var(--primary-color);
-  border-radius: 50%;
-  transition: var(--transition);
-}
-
-.slider-pagination .slider-page.is-active {
-  background: var(--primary-hover);
-  transform: scale(1.2);
-}
-
 /* Section Titles */
 .title.is-3 {
   font-family: 'Inter', sans-serif !important;
@@ -211,7 +179,7 @@ body {
 
 /* Footer Improvements */
 .footer {
-  background: var(--background-secondary);
+  background: var(--background-primary);
   border-top: 1px solid var(--border-color);
   padding: 3rem 1.5rem;
 }
@@ -624,15 +592,6 @@ a:focus {
   }
 }
 
-/* Hero Tagline */
-.hero-tagline {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  max-width: 700px;
-  margin: 0 auto 1.5rem;
-  line-height: 1.7;
-}
-
 /* Preview Section */
 .section-preview {
   padding-top: 1.5rem;
@@ -707,50 +666,10 @@ a:focus {
   letter-spacing: -0.01em;
 }
 
-/* Card Stat Annotation */
-.card-stat {
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--text-light);
-  font-weight: 600;
-  padding-bottom: 0.5rem;
-  letter-spacing: 0.02em;
-}
-
-/* Motivation Callout */
-.motivation-callout {
-  background: #eff6ff;
-  border-left: 4px solid var(--primary-color);
-  border-radius: var(--border-radius);
-  padding: 1.5rem 2rem;
-  margin-bottom: 2rem;
-}
-.callout-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.motivation-callout p {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
 /* Responsive: New Components */
 @media screen and (max-width: 768px) {
-  .hero-tagline {
-    font-size: 1rem;
-  }
   .catchphrase {
     font-size: 1.15rem;
-  }
-  .problem-callout {
-    padding: 1rem 1.25rem;
   }
 }
 
