@@ -114,13 +114,54 @@ body {
 
 .publication-authors {
     font-family: 'Inter', sans-serif !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 2.6rem;
+    font-size: 1.5rem !important;
     font-weight: 500;
     margin-bottom: 1.5rem;
 }
 
 .author-block {
   display: inline-block;
-  margin-right: 0.5rem;
+}
+
+.corresponding-author {
+  font-size: 0.75em;
+  position: relative;
+  left: -0.08em;
+}
+
+.publication-venue {
+  color: var(--text-secondary);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  margin: -0.35rem 0 1.25rem;
+}
+
+.publication-affiliation {
+  display: flex;
+  justify-content: center;
+  margin: -0.4rem 0 1.5rem;
+}
+
+.affiliation-link {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.affiliation-link:hover {
+  opacity: 0.85;
+}
+
+.affiliation-logo {
+  width: auto;
+  height: 52px;
+  max-width: min(64vw, 270px);
+  object-fit: contain;
 }
 
 /* Pagination and Misc Improvements */
@@ -293,7 +334,22 @@ code {
   }
 
   .publication-authors {
-    font-size: 1rem !important;
+    font-size: 1.25rem !important;
+    gap: 0.4rem 1.65rem;
+  }
+
+  .publication-venue {
+    font-size: 1.65rem;
+    margin: -0.2rem 0 1rem;
+  }
+
+  .publication-affiliation {
+    margin-top: -0.25rem;
+  }
+
+  .affiliation-logo {
+    height: 44px;
+    max-width: 72vw;
   }
 
   .button {
