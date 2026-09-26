@@ -121,6 +121,10 @@ body {
   margin: -0.35rem 0 1.25rem;
 }
 
+.publication-venue-highlight {
+  color: var(--primary-color);
+}
+
 .publication-affiliation {
   display: flex;
   justify-content: center;
